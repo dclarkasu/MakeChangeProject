@@ -22,16 +22,15 @@ public class MakeChange {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		String answer;
+		char answer;
 		
 		do {
 		runTransaction(scanner);
 		System.out.println("Would you like to make another purchase (Y/N)?");
-		answer = scanner.next();
-		
-		
-		} while( answer.equalsIgnoreCase("Y"));
+		answer = scanner.next().toLowerCase().charAt(0);		
+		} while( answer == 'y');
 	}
+		
 	public static void runTransaction(Scanner kb) {
 		int[] cashAmt = {2000, 1000, 500, 100, 25, 10, 5, 1};
 		String[] bills = {"$20's", "$10's", "$5's", "$1's", ".25c", ".10c", ".05c", ".01c"};
