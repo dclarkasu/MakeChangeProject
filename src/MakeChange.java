@@ -22,10 +22,20 @@ public class MakeChange {
 
 	public static void main(String[] args) {
 		Scanner kb = new Scanner(System.in);
-		
+		double[] cashAmt = {20, 10, 5, 1, .25, .10, .05, .01};
+		double price, tender, changeToGive;
+		int amounts;
 		
 		// Prompt: customer asks how much item is
 			//method: dialogue with customer
+		System.out.println("Excuse me, how much is this item?");
+		System.out.println("That item is: ");
+		  price = kb.nextDouble();
+		System.out.println();
+		
+		System.out.print("Thanks, here you go: ");
+		  tender = kb.nextDouble();
+		
 		
 		// Prompt how much money was tendered by customer
 			//method: customer produces money --> was it too little or exact amount?
