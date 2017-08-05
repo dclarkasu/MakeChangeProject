@@ -21,10 +21,24 @@ import java.util.Scanner;
 public class MakeChange {
 
 	public static void main(String[] args) {
-		Scanner kb = new Scanner(System.in);
-		double[] cashAmt = {20, 10, 5, 1, .25, .10, .05, .01};
-		double price, tender, changeToGive;
-		int amounts;
+		Scanner scanner = new Scanner(System.in);
+		String answer;
+		
+		do {
+		runTransaction(scanner);
+		System.out.println("Would you like to make another purchase (Y/N)?");
+		answer = scanner.next();
+		
+		
+		} while( answer.equalsIgnoreCase("Y"));
+	}
+	public static void runTransaction(Scanner kb) {
+		int[] cashAmt = {2000, 1000, 500, 100, 25, 10, 5, 1};
+		String[] bills = {"$20's", "$10's", "$5's", "$1's", ".25c", ".10c", ".05c", ".01c"};
+		String[] bill = {"$20", "$10", "$5", "$1", ".25c", ".10c", ".05c", ".01c"};
+		double price, tender;
+		int changeToGive;
+		int amounts = 0;
 		
 		// Prompt: customer asks how much item is
 			//method: dialogue with customer
@@ -36,9 +50,11 @@ public class MakeChange {
 		
 		// Prompt how much money was tendered by customer
 		//method: customer produces money --> was it too little or exact amount?
-		// If statements, loop back to top of dialogue?
 		System.out.print("Thanks, here you go: ");
 		  tender = kb.nextDouble();
+		  
+		//If statement: if money tendered > than price then change is given. How many bills, coins, and what amount?
+	    // Need to figure out how to RETURN change in correct denominations. How do we determine that?
 		if(tender < price) {
 			System.out.println("Please tender the correct amount, that is not enough");
 		}
@@ -47,17 +63,33 @@ public class MakeChange {
 		}
 		else {			
 			System.out.println("Thank you, let me get your change");
+			changeToGive = (int)((100*tender) - (100*price));
+			createChange(amounts, changeToGive, cashAmt, bills, bill);
 		}
-
-		changeToGive = price - tender;
-		
-		//If statement: if money tendered > than price then change is given. How many bills, coins, and what amount?
-			// Need to figure out how to RETURN change in correct denominations. How do we determine that?
-	
-
 	}
-
+	
+	public static void createChange(int amounts, double changeToGive, int cashAmt[], String[] bills, String[] bill) {
+		for(int i=0; i<cashAmt.length; i++) {
+			amounts = (int)(changeToGive / cashAmt[i]);
+			changeToGive = changeToGive % cashAmt[i];
+			if(amounts > 1) {
+				System.out.println(amounts + " " + bills[i]);
+			}
+			else if( amounts == 1) {
+				System.out.println(amounts + " " + bill[i]);
+				
+			}
+		}
+		
+	}
+	
+	
+	
+	
+	
 }
+
+// Make methods, loop for if they want to purchase something else,
 
 // Test conditions for grading: Amount: .67, Tendered: .50, Result: Error message
 //Amount: .67, Tendered: 1.00, Result: 1 quarter, 1 nickel, 3 pennies.
