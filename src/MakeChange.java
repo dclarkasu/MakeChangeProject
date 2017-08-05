@@ -33,13 +33,23 @@ public class MakeChange {
 		  price = kb.nextDouble();
 		System.out.println();
 		
-		System.out.print("Thanks, here you go: ");
-		  tender = kb.nextDouble();
-		
 		
 		// Prompt how much money was tendered by customer
-			//method: customer produces money --> was it too little or exact amount?
-			// If statements, loop back to top of dialogue?
+		//method: customer produces money --> was it too little or exact amount?
+		// If statements, loop back to top of dialogue?
+		System.out.print("Thanks, here you go: ");
+		  tender = kb.nextDouble();
+		if(tender < price) {
+			System.out.println("Please tender the correct amount, that is not enough");
+		}
+		else if(tender == price) {
+			System.out.println("Thank you, you've given me the exact amount");
+		}
+		else {			
+			System.out.println("Thank you, let me get your change");
+		}
+
+		changeToGive = price - tender;
 		
 		//If statement: if money tendered > than price then change is given. How many bills, coins, and what amount?
 			// Need to figure out how to RETURN change in correct denominations. How do we determine that?
