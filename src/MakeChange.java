@@ -20,6 +20,9 @@
 import java.util.Scanner;
 
 public class MakeChange {
+	static int[] cashAmt = { 2000, 1000, 500, 100, 25, 10, 5, 1 };			//array containing doubles for doing actual calculations
+	static String[] bills = { "$20's", "$10's", "$5's", "$1's", ".25c", ".10c", ".05c", ".01c" };  //array contains Strings so that it outputs labels instead of just the digit for how many are needed
+	static String[] bill = { "$20", "$10", "$5", "$1", ".25c", ".10c", ".05c", ".01c" };  //bill is singular b/c it is for when there is only 1 required $ unit
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);		//declared in main so must be pased into methods. (Doesn't have to have same name)
@@ -34,9 +37,6 @@ public class MakeChange {
 	}
 
 	public static void runTransaction(Scanner kb) {
-		int[] cashAmt = { 2000, 1000, 500, 100, 25, 10, 5, 1 };			//array containing doubles for doing actual calculations
-		String[] bills = { "$20's", "$10's", "$5's", "$1's", ".25c", ".10c", ".05c", ".01c" };  //array contains Strings so that it outputs labels instead of just the digit for how many are needed
-		String[] bill = { "$20", "$10", "$5", "$1", ".25c", ".10c", ".05c", ".01c" };  //bill is singular b/c it is for when there is only 1 required $ unit
 		double price, tender;
 		int changeToGive;												//gets casted to an int later
 
@@ -58,11 +58,11 @@ public class MakeChange {
 		} else {
 			System.out.println("Thank you, let me get your change");
 			changeToGive = (int) ((100 * tender) - (100 * price));
-			createChange(changeToGive, cashAmt, bills, bill);
+			createChange(changeToGive);
 		}
 	}
 
-	public static void createChange(double changeToGive, int cashAmt[], String[] bills, String[] bill) {
+	public static void createChange(double changeToGive) {
 		for (int i = 0; i < cashAmt.length; i++) {
 			int amounts = (int) (changeToGive / cashAmt[i]);
 			changeToGive = changeToGive % cashAmt[i];
