@@ -49,7 +49,7 @@ public class MakeChange {
 		
 		// Prompt how much money was tendered by customer
 		//method: customer produces money --> was it too little or exact amount?
-		System.out.print("Thanks, here you go: ");
+		System.out.print("Thanks for telling me, here is my money: ");
 		  tender = kb.nextDouble();
 		  
 		//If statement: if money tendered > than price then change is given. How many bills, coins, and what amount?
