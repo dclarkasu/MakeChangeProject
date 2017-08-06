@@ -15,6 +15,8 @@ public class MakeChange {
 			System.out.println("Would you like to make another purchase (Y/N)?");
 			answer = scanner.next().toLowerCase().charAt(0);
 		} while (answer == 'y');
+		
+		scanner.close();
 	}
 
 	public static void runTransaction(Scanner kb) {
